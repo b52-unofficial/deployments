@@ -2,21 +2,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "lighthouse.fullname" . }}-loadbalancer
+  name: {{ include "geth.fullname" . }}-loadbalancer
   labels:
-    {{- include "lighthouse.labels" . | nindent 4 }}
+    {{- include "geth.labels" . | nindent 4 }}
+  annotations:
+    {{- include "geth.annotations" . | nindent 4 }}
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   ports:
     - name: p2p-tcp
-      port: {{ .Values.lighthouse.p2pPort }}
+      port: {{ .Values.geth.p2pPort }}
       targetPort: p2p-tcp
       protocol: TCP
-    - name: p2p-udp
-      port: {{ .Values.lighthouse.p2pPort }}
-      targetPort: p2p-udp
-      protocol: UDP
   selector:
-    {{- include "lighthouse.labels" . | nindent 4 }}
+    {{- include "geth.labels" . | nindent 4 }}
 {{- end -}}

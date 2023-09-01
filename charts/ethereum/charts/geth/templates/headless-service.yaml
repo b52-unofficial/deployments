@@ -28,7 +28,7 @@ spec:
       port: {{ .Values.geth.p2pPort }}
       targetPort: p2p-udp
       protocol: UDP
-    {{ end }}}
+    {{ end }}
     - name: metrics
       port: {{ .Values.geth.metricsPort }}
       targetPort: metrics

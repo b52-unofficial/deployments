@@ -1,0 +1,22 @@
+type: application
+
+apiVersion: v2
+appVersion: 1.0.0
+
+name: ethereum-helm
+description: ethereum helm chart 
+
+keywords:
+  - lighthouse
+  - geth
+
+dependencies:
+  - condition: geth.enabled
+    name: geth
+    version: 1.0.0
+  - condition: lighthouse.enabled
+    name: lighthouse
+    version: 1.0.0
+
+version: 1.0.0
+

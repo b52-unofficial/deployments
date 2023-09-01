@@ -1,0 +1,9 @@
+dependencies:
+- name: geth
+  repository: ""
+  version: 1.0.0
+- name: lighthouse
+  repository: ""
+  version: 1.0.0
+digest: sha256:82a1f27afc1348768b4bda207acae5b27a42aab1f12d24ab5bb2c5778d6586c0
+generated: "2023-09-01T20:47:15.478566+09:00"

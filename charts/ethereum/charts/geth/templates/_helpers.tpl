@@ -39,6 +39,10 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
+{{- define "geth.annotations" -}}
+service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+{{- end }}
+
 {{/*
 Selector labels
 */}}
