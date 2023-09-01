@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      mirror /mirror;
+    nginx.ingress.kubernetes.io/server-snippet: |
+      location = /mirror {
+        internal;
+        proxy_set_header Host tx-hero-transaction-crawler-svc;
+        proxy_pass http://tx-hero-transaction-crawler-svc:3000;
+      }
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+  generation: 1
+  name: tx-hero-ingress
+  namespace: tx-hero
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          #          - backend:
+          #              service:
+          #                name: ethereum-sentry-lighthouse-loadbalancer
+          #                port:
+          #                  number: 9000
+          #            path: /
+          #            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: demo
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
+status:
+  loadBalancer:
+    ingress:
+      - hostname: ac6433d56b81c43ccb97f951d43ef720-6924b6a74916ab00.elb.ap-northeast-2.amazonaws.com

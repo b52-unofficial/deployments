@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tx-hero-transaction-crawler
+  labels:
+    app: tx-hero-transaction-crawler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tx-hero-transaction-crawler
+  template:
+    metadata:
+      labels:
+        app: tx-hero-transaction-crawler
+    spec:
+      containers:
+        - name: tx-hero-transaction-crawler
+          image: a41ventures/tx-hero-transaction-crawler:dev
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
