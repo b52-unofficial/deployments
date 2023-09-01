@@ -1,0 +1,22 @@
+{{- if .Values.privateMempool.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "lighthouse.fullname" . }}-loadbalancer
+  labels:
+    {{- include "lighthouse.labels" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - name: p2p-tcp
+      port: {{ .Values.lighthouse.p2pPort }}
+      targetPort: p2p-tcp
+      protocol: TCP
+    - name: p2p-udp
+      port: {{ .Values.lighthouse.p2pPort }}
+      targetPort: p2p-udp
+      protocol: UDP
+  selector:
+    {{- include "lighthouse.labels" . | nindent 4 }}
+{{- end -}}

@@ -46,8 +46,8 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "lighthouse.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "lighthouse.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+alpha.eksctl.io/cluster-name: {{ .Values.deploy.cluster }}
+alpha.eksctl.io/nodegroup-name: {{ .Values.deploy.nodeLabel }}
 {{- end }}
 
 {{/*

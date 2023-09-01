@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "geth.fullname" . }}-headless
+  labels:
+    {{- include "geth.labels" . | nindent 4 }}
+spec:
+  clusterIP: None
+  ports:
+    - name: http-rpc
+      port: {{ .Values.geth.httpRpcPort }}
+      targetPort: http-rpc
+      protocol: TCP
+    - name: ws-rpc
+      port: {{ .Values.geth.wsRpcPort }}
+      targetPort: ws-rpc
+      protocol: TCP
+    - name: auth-rpc
+      port: {{ .Values.geth.authRpcPort }}
+      targetPort: auth-rpc
+      protocol: TCP
+    {{ if not .Values.privateMempool.enabled }}
+    - name: p2p-tcp  
+      port: {{ .Values.geth.p2pPort }}
+      targetPort: p2p-tcp
+      protocol: TCP
+    - name: p2p-udp
+      port: {{ .Values.geth.p2pPort }}
+      targetPort: p2p-udp
+      protocol: UDP
+    {{ end }}}
+    - name: metrics
+      port: {{ .Values.geth.metricsPort }}
+      targetPort: metrics
+      protocol: TCP
+  selector:
+    {{- include "geth.selectorLabels" . | nindent 4 }}

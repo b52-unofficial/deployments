@@ -1,6 +1,3 @@
-{{/*
-Expand the name of the chart.
-*/}}
 {{- define "geth.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
@@ -46,8 +43,8 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "geth.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "geth.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+alpha.eksctl.io/cluster-name: {{ .Values.deploy.cluster }}
+alpha.eksctl.io/nodegroup-name: {{ .Values.deploy.nodeLabel }}
 {{- end }}
 
 {{/*
