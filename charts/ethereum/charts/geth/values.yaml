@@ -11,6 +11,7 @@ geth:
   network: "goerli"
   jwtSecretName: jwt-secret
   jwtSecretFilename: jwt.hex
+  httpApiNamespace: db,eth,net,engine,rpc,web3,admin
   httpRpcPort: 8545
   wsRpcPort: 8546
   authRpcPort: 8551

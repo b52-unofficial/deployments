@@ -55,7 +55,7 @@ spec:
               --http.addr=0.0.0.0
               --http.port={{ .Values.geth.httpRpcPort }}
               --http.vhosts=*
-              --http.api="db,eth,net,engine,rpc,web3"
+              --http.api={{ .Values.geth.httpApiNamespace }}
               --http.corsdomain=*
               --authrpc.jwtsecret="/data/{{ .Values.geth.jwtSecretFilename }}"
               --authrpc.addr=0.0.0.0
