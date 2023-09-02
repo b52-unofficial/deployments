@@ -1,8 +1,8 @@
-{{- if .Values.privateMempool.enabled -}}
+{{- if not .Values.privateMempool.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "geth.fullname" . }}-udp-loadbalancer
+  name: {{ include "geth.fullname" . }}-tcp-loadbalancer
   labels:
     {{- include "geth.labels" . | nindent 4 }}
   annotations:
@@ -16,5 +16,5 @@ spec:
       targetPort: p2p-tcp
       protocol: TCP
   selector:
-    {{- include "geth.labels" . | nindent 4 }}
+    {{- include "geth.podSelectorLabels" . | nindent 4 }}
 {{- end -}}

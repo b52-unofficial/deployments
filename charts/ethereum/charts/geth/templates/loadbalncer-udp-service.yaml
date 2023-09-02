@@ -1,4 +1,4 @@
-{{- if .Values.privateMempool.enabled -}}
+{{- if not .Values.privateMempool.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -16,5 +16,5 @@ spec:
       targetPort: p2p-udp
       protocol: UDP
   selector:
-    {{- include "geth.labels" . | nindent 4 }}
+    {{- include "geth.podSelectorLabels" . | nindent 4 }}
 {{- end -}}

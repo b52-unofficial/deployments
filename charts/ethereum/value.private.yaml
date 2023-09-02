@@ -14,7 +14,7 @@ geth:
     nodeLabel: "private-mempool-ng"
   replicaCount: 1
   volume:
-    name: ""
+    name: "pvc-dfb39df4-5bf2-4de8-b123-b1b34ec41f1c"
     storageClass: "gp2"
     size: "300Gi"
   resources: {}
@@ -52,7 +52,7 @@ lighthouse:
     nodeLabel: "private-mempool-ng"
   replicaCount: 1
   volume:
-    name: ""
+    name: "pvc-db2b907f-fae5-42e4-a8c1-5ff8ef36427f"
     storageClass: "gp2"
     size: "150Gi"
   lighthouse:

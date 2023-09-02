@@ -8,12 +8,12 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "geth.selectorLabels" . | nindent 6 }}
+      {{- include "geth.labels" . | nindent 6 }}
   serviceName: {{ include "geth.fullname" . }}
   template:
     metadata:
       labels:
-        {{- include "geth.selectorLabels" . | nindent 8 }}
+        {{- include "geth.labels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "geth.serviceAccountName" . }}
       nodeSelector:

@@ -31,6 +31,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "geth.labels" -}}
+app: {{ include "geth.fullname" . }}
 helm.sh/chart: {{ include "geth.chart" . }}
 {{ include "geth.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
@@ -49,6 +50,14 @@ Selector labels
 {{- define "geth.selectorLabels" -}}
 alpha.eksctl.io/cluster-name: {{ .Values.deploy.cluster }}
 alpha.eksctl.io/nodegroup-name: {{ .Values.deploy.nodeLabel }}
+{{- end }}
+
+{{/*
+Application Selector labels for service selector
+*/}}
+{{- define "geth.podSelectorLabels" -}}
+app: {{ include "geth.fullname" . }}
+helm.sh/chart: {{ include "geth.chart" . }}
 {{- end }}
 
 {{/*

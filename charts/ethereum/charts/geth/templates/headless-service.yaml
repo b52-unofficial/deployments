@@ -19,7 +19,6 @@ spec:
       port: {{ .Values.geth.authRpcPort }}
       targetPort: auth-rpc
       protocol: TCP
-    {{ if not .Values.privateMempool.enabled }}
     - name: p2p-tcp  
       port: {{ .Values.geth.p2pPort }}
       targetPort: p2p-tcp
@@ -28,10 +27,9 @@ spec:
       port: {{ .Values.geth.p2pPort }}
       targetPort: p2p-udp
       protocol: UDP
-    {{ end }}
     - name: metrics
       port: {{ .Values.geth.metricsPort }}
       targetPort: metrics
       protocol: TCP
   selector:
-    {{- include "geth.selectorLabels" . | nindent 4 }}
+    {{- include "geth.podSelectorLabels" . | nindent 4 }}

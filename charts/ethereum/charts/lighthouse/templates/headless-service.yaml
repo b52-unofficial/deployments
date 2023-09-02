@@ -24,4 +24,4 @@ spec:
       targetPort: metrics
       protocol: TCP
   selector:
-    {{- include "lighthouse.selectorLabels" . | nindent 4 }}
+    {{- include "lighthouse.podSelectorLabels" . | nindent 4 }}

@@ -14,14 +14,17 @@ geth:
     nodeLabel: "private-mempool-ng"
   replicaCount: 1
   volume:
-    name: ""
+    name: "pvc-e429c536-895a-45bb-854c-be14ab7be0ef"
     storageClass: "ebs-gp3"
     size: "400Gi"
   geth:
     httpApiNamespace: db,eth,net,engine,rpc,web3
     nodiscover: false
     maxpeers: 100
+  privateMempool:
+    enabled: false
   resources: {}
+
 
   #  _ _       _     _   _                              _
   # | (_)     | |   | | | |                            | |
@@ -41,7 +44,7 @@ lighthouse:
     nodeLabel: "private-mempool-ng"
   replicaCount: 1
   volume:
-    name: ""
+    name: "pvc-069afd12-9c82-4497-8f58-4a91407d9520"
     storageClass: "gp2"
     size: "200Gi"
   lighthouse:

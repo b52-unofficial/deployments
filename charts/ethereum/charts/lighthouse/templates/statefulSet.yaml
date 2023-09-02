@@ -8,12 +8,12 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "lighthouse.selectorLabels" . | nindent 6 }}
+      {{- include "lighthouse.labels" . | nindent 6 }}
   serviceName: {{ include "lighthouse.fullname" . }}
   template:
     metadata:
       labels:
-        {{- include "lighthouse.selectorLabels" . | nindent 8 }}
+        {{- include "lighthouse.labels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "lighthouse.serviceAccountName" . }}
       nodeSelector:

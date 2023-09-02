@@ -15,4 +15,4 @@ spec:
       targetPort: p2p-tcp
       protocol: TCP
   selector:
-    {{- include "lighthouse.labels" . | nindent 4 }}
+    {{- include "lighthouse.podSelectorLabels" . | nindent 4 }}

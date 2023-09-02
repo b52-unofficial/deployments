@@ -34,6 +34,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "lighthouse.labels" -}}
+app: {{ include "lighthouse.fullname" . }}
 helm.sh/chart: {{ include "lighthouse.chart" . }}
 {{ include "lighthouse.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
@@ -52,6 +53,14 @@ Selector labels
 {{- define "lighthouse.selectorLabels" -}}
 alpha.eksctl.io/cluster-name: {{ .Values.deploy.cluster }}
 alpha.eksctl.io/nodegroup-name: {{ .Values.deploy.nodeLabel }}
+{{- end }}
+
+{{/*
+Application Selector labels for service selector
+*/}}
+{{- define "lighthouse.podSelectorLabels" -}}
+app: {{ include "lighthouse.fullname" . }}
+helm.sh/chart: {{ include "lighthouse.chart" . }}
 {{- end }}
 
 {{/*
