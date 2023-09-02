@@ -31,8 +31,8 @@ geth:
     authRpcPort: 8551
     p2pPort: 30303
     metricsPort: 6060
-    #nodiscover: false
-    #maxpeers: 1
+    nodiscover: true
+    maxpeers: 1
 
   #  _ _       _     _   _                              _
   # | (_)     | |   | | | |                            | |

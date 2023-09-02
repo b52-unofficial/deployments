@@ -19,6 +19,8 @@ geth:
     size: "400Gi"
   geth:
     httpApiNamespace: db,eth,net,engine,rpc,web3
+    nodiscover: false
+    maxpeers: 100
   resources: {}
 
   #  _ _       _     _   _                              _
