@@ -15,6 +15,10 @@ spec:
       port: {{ .Values.geth.p2pPort }}
       targetPort: p2p-tcp
       protocol: TCP
+    - name: http-rpc
+      port: {{ .Values.geth.httpRpcPort }}
+      targetPort: http-rpc
+      protocol: TCP
   selector:
     {{- include "geth.labels" . | nindent 4 }}
 {{- end -}}

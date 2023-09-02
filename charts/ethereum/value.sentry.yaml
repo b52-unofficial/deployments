@@ -43,5 +43,5 @@ lighthouse:
     storageClass: "gp2"
     size: "200Gi"
   lighthouse:
-    checkpointSyncEndpoint: https://mainnet.checkpoint.sigp.io
+    checkpointSyncEndpoint: https://sync-goerli.beaconcha.in
   resources: {}

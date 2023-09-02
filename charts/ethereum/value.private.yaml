@@ -18,6 +18,8 @@ geth:
     storageClass: "gp2"
     size: "300Gi"
   resources: {}
+  privateMempool:
+    enabled: true
 
   geth:
     network: "goerli"
@@ -54,5 +56,5 @@ lighthouse:
     storageClass: "gp2"
     size: "150Gi"
   lighthouse:
-    checkpointSyncEndpoint: https://mainnet.checkpoint.sigp.io
+    checkpointSyncEndpoint: https://sync-goerli.beaconcha.in
   resources: {}
