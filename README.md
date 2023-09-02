@@ -8,7 +8,7 @@ This repository is a versatile tool for automating deployment workflows using Do
 
 
 ## Features
-TL;DR:
+**TL;DR**:
 - Simplifies deployment processes for Docker and Kubernetes.
 - Provides pre-configured templates for common deployment scenarios.
 - Supports custom configuration and advanced deployment strategies.
@@ -41,5 +41,4 @@ To get started with Deployments, follow these steps:
    helm install ethereum-sentry . -f value.sentry.yaml \
    && helm install ethereum-private . -f value.private.yaml
    ```
-   
 2. nginx release 
