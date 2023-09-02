@@ -1,0 +1,20 @@
+{{- if .Values.privateMempool.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "geth.fullname" . }}-udp-loadbalancer
+  labels:
+    {{- include "geth.labels" . | nindent 4 }}
+  annotations:
+    {{- include "geth.annotations" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - name: p2p-tcp
+      port: {{ .Values.geth.p2pPort }}
+      targetPort: p2p-tcp
+      protocol: TCP
+  selector:
+    {{- include "geth.labels" . | nindent 4 }}
+{{- end -}}
