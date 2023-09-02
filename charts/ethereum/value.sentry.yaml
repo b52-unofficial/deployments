@@ -14,7 +14,7 @@ geth:
     nodeLabel: "private-mempool-ng"
   replicaCount: 1
   volume:
-    name: "pvc-e429c536-895a-45bb-854c-be14ab7be0ef"
+    name: "pvc-4af48ce2-0466-4a49-8e4a-ea6343f69bc5"
     storageClass: "ebs-gp3"
     size: "400Gi"
   geth:
@@ -44,9 +44,12 @@ lighthouse:
     nodeLabel: "private-mempool-ng"
   replicaCount: 1
   volume:
-    name: "pvc-069afd12-9c82-4497-8f58-4a91407d9520"
+    name: "pvc-0258ee7a-c360-4d72-8096-f455c6d5b557"
     storageClass: "gp2"
     size: "200Gi"
   lighthouse:
     checkpointSyncEndpoint: https://sync-goerli.beaconcha.in
   resources: {}
+
+externalResources:
+  loadBalancerIP: 0.0.0.0

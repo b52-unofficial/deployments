@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-eth-node-svc
+  namespace: tx-hero
+spec:
+  type: ExternalName
+  externalName: 3.35.196.3

@@ -68,8 +68,8 @@ spec:
               --ws.addr=0.0.0.0
               --ws.port={{ .Values.geth.wsRpcPort }}
               --ws.origins=*
-              --nodiscover={{ .Values.geth.nodiscover }}
               --maxpeers={{ .Values.geth.maxpeers }}
+              --verbosity=4
 
           livenessProbe:
             tcpSocket:

@@ -31,7 +31,8 @@ spec:
           #            pathType: ImplementationSpecific
           - backend:
               service:
-                name: ethereum-private-geth-loadbalancer
+                name: external-eth-node-svc
+                # name: ethereum-private-geth-loadbalancer
                 port:
                   number: 8545
             path: /
